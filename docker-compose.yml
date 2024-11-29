@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: _docker/Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      # Для корректного отслеживания изменений в файлах на Windows и macOS
+      - CHOKIDAR_USEPOLLING=true
