@@ -11,16 +11,16 @@ COPY ../package*.json ./
 RUN npm install
 
 # Копируем все файлы проекта в контейнер
-COPY ../. ./
+COPY . .
 
-# Строим приложение для продакшн
-RUN npm run build-dev
+# Копируем entrypoint.sh в образ
+COPY _docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 
-# Устанавливаем переменную окружения для сервера
-ENV HOST 0.0.0.0
+# Делаем скрипт исполняемым
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Открываем порт
-EXPOSE 3000
+# Устанавливаем entrypoint
+ENTRYPOINT ["entrypoint.sh"]
 
-# Запускаем приложение
+# Указываем команду по умолчанию
 CMD ["npm", "start"]
