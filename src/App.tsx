@@ -1,6 +1,5 @@
 import logo from './images/logo.svg';
 import './styles/main.pcss';
-import React from "react";
 
 function App(): React.JSX.Element {
     return (
