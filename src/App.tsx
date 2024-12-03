@@ -1,8 +1,8 @@
-import React from 'react';
 import logo from './images/logo.svg';
 import './styles/main.pcss';
+import React from "react";
 
-function App() {
+function App(): React.JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
