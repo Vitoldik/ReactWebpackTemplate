@@ -29,9 +29,28 @@ const config = {
                 loader: 'ts-loader',
                 exclude: /node_modules/
             },
+            // Обработка модульных PostCSS файлов
+            {
+                test: /\.module\.pcss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[name]__[local]__[hash:base64:5]',
+                            },
+                            importLoaders: 1,
+                            esModule: false, // Для экспорта объекта классов как default
+                        },
+                    },
+                    'postcss-loader',
+                ],
+            },
             // Обработка PostCSS файлов
             {
                 test: /\.pcss$/,
+                exclude: /\.module\.pcss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
