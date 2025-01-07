@@ -2,12 +2,11 @@ module.exports = {
     parser: require('postcss-comment'),
     plugins: {
         'autoprefixer': {},
+        'postcss-import': {},
+        'postcss-simple-vars': {},
         'postcss-mixins': {},
         'postcss-each': {},
         'postcss-nested': {},
-        'postcss-simple-vars': {
-            silent: true
-        },
         'postcss-nested-ancestors': {},
         'cssnano': {
             preset: 'default'
